@@ -1,0 +1,55 @@
+body {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.bomb-container {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.bomb {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.bomb img {
+  width: 326px; /* ajuste conforme necessário */
+  height: 326px; /* ajuste conforme necessário */
+}
+
+.explosion {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* Esconde a explosão inicialmente */
+  background-size: cover;
+  z-index: 2; /* Certifique-se de que a explosão esteja na frente */
+}
+
+@keyframes explode {
+  0% { background-image: url('./assets/explosao1.png'); }
+  16.67% { background-image: url('./assets/explosao2.png'); }
+  33.33% { background-image: url('./assets/explosao3.png'); }
+  50% { background-image: url('./assets/explosao4.png'); }
+  66.67% { background-image: url('./assets/explosao5.png'); }
+  83.33% { background-image: url('./assets/explosao6.png'); }
+  100% { background-image: url('./assets/explosao6.png'); }
+}
+
+.bomb.exploding .explosion {
+  animation: explode 1s steps(6) forwards;
+}
