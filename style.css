@@ -1,32 +1,62 @@
 body {
   font-family: "Roboto", sans-serif;
   display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 0;
   margin: 0;
   width: 100vw;
   height: 100vh;
 }
-
-.bomb-container {
+.content {
   display: flex;
-  justify-content: space-around;
-  width: 50%;
+  justify-content: center;
+  align-items: center;
+  height: 98vh;
+  width: 98vh;
+}
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.container-difficulty{
+  display: inline-flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.container-moedas{
+    display: flex;
+    justify-content: center;
+}
+.container-moedas img{
+  width: 48px;
+}
+.content-difficulty{
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container-bomba {
+  grid-template-columns: repeat(3, 1fr);
+  display: inline-grid;
+  width: 100%;
 }
 
-.bomb {
+.bomba {
   position: relative;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
   z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 
-.bomb img {
-  width: 326px; /* ajuste conforme necessário */
-  height: 326px; /* ajuste conforme necessário */
+.bomba img {
+  width: 100%;
+  height: 100%;
 }
 
 .explosion {
@@ -35,21 +65,87 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  display: none; /* Esconde a explosão inicialmente */
+  display: none;
   background-size: cover;
-  z-index: 2; /* Certifique-se de que a explosão esteja na frente */
+  z-index: 2;
 }
 
 @keyframes explode {
-  0% { background-image: url('./assets/explosao1.png'); }
-  16.67% { background-image: url('./assets/explosao2.png'); }
-  33.33% { background-image: url('./assets/explosao3.png'); }
-  50% { background-image: url('./assets/explosao4.png'); }
-  66.67% { background-image: url('./assets/explosao5.png'); }
-  83.33% { background-image: url('./assets/explosao6.png'); }
-  100% { background-image: url('./assets/explosao6.png'); }
+  0% {
+    background-image: url("./assets/explosao1.png");
+  }
+  16.67% {
+    background-image: url("./assets/explosao2.png");
+  }
+  33.33% {
+    background-image: url("./assets/explosao3.png");
+  }
+  50% {
+    background-image: url("./assets/explosao4.png");
+  }
+  66.67% {
+    background-image: url("./assets/explosao5.png");
+  }
+  83.33% {
+    background-image: url("./assets/explosao6.png");
+  }
+  100% {
+    background-image: url("./assets/explosao6.png");
+  }
 }
 
-.bomb.exploding .explosion {
+.bomba.exploding .explosion {
   animation: explode 1s steps(6) forwards;
+}
+
+
+
+.difficult-buttons{
+  border: none;
+  height: 64px;
+  background-color: transparent;
+  background-size: cover;
+  cursor: pointer;
+  filter: grayscale(50%);
+}
+.difficult-buttons:hover{
+  filter: grayscale(0);
+}
+.active{
+  filter: grayscale(0);
+}
+#easyDifficulty{
+  background-image: url(./assets/easy.png);
+}
+#mediumDifficulty{
+  background-image: url(./assets/medium.png);
+
+}
+#hardDifficulty{
+  background-image: url(./assets/hard.png);
+}
+
+@media (max-width: 740px) {
+  #container {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .container-bomba {
+    max-width: 500px;
+}
+.container-difficulty {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+.content-difficulty {
+  width: 100%;
+}
+.difficult-buttons {
+  margin-top: 34px;
+  height: 70px;
+}
 }
